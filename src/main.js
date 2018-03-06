@@ -22,6 +22,7 @@ import axios from 'axios'
 
 //引入les文件
 import './less/index.less'
+import './assets/css/style.css'
 // axios.get(domain + api.logout).then(()=>console.log('登出'));
 
 // 配置默认域名, 这样请求的时候就不用在url里加域名了

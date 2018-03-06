@@ -2,11 +2,11 @@
     <div class='logins'>
         <section>
             <el-form :model="ruleForm2" status-icon :rules="rules2" ref="love" label-width="80px" label-position="top">
-                <el-form-item label="账号" prop="uname">
-                    <el-input type="text" v-model="ruleForm2.uname" auto-complete="off"></el-input>
+                <el-form-item label="账号" prop="user_name">
+                    <el-input type="text" v-model="ruleForm2.user_name" auto-complete="off"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="upwd">
-                    <el-input type="password" v-model="ruleForm2.upwd" auto-complete="off"></el-input>
+                <el-form-item label="密码" prop="password">
+                    <el-input type="upassword" v-model="ruleForm2.password" auto-complete="off"></el-input>
                 </el-form-item>
 
                 <el-form-item>
@@ -32,12 +32,12 @@ export default {
     //   };
       return {
         ruleForm2: {
-          uname: '',
-          upwd: '',
+          user_name: 'ivanyb',
+          password: '',
         },
         rules2: {
-          uname: [{ required: true, message: '请输入账号', trigger: 'blur' }],
-          upwd: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+          user_name: [{ required: true, message: '请输入账号', trigger: 'blur' }],
+          upassword: [{ required: true, message: '请输入密码', trigger: 'blur' }],
         }
       };
     },
@@ -50,8 +50,9 @@ export default {
                     this.$alert("登录成功",'正在跳转',{
                          callback:()=> {
                               // console.log(123);
-                              localStorage.setItem('name',res.data.message.uname)
-                             this.$router.push({name:'admin'})
+                              localStorage.setItem('user_name',res.data.message.user_name);
+                              let nextPage = this.$route.query.next ||'goods/list'
+                             this.$router.push({path:nextPage})
 
                         }
                     })
