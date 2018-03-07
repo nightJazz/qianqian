@@ -1,7 +1,7 @@
 <template>
   <div class="ListMain">
     <div class="section" v-for="item in dates" :key="item.level1cateid" >
-    <!--子类-->
+
     <div class="main-tit" >
       <h2>{{item.catetitle}}</h2>
       <p>
@@ -10,7 +10,7 @@
         </a>
       </p>
     </div>
-    <!--/子类-->
+
     <div class="wrapper clearfix">
       <div class="wrap-box">
         <ul class="img-list">
@@ -40,17 +40,14 @@
     </div>
   </div>
   </div>
+
 </template>
 
 <script>
 export default {
   data() {
     return {
-      dates: [
-
-      ]
-
-
+      dates: []
     };
   },
   methods: {
