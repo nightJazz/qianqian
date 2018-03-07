@@ -1,4 +1,4 @@
-import jQuery from './jquery-1.11.3.min'
+import jQuery from 'jquery'
 (function($){
 
 	var fnName = 'magnifier';

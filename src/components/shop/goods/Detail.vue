@@ -19,6 +19,7 @@
           <div class="left-925">
             <div class="goods-box clearfix">
               <!--商品图片-->
+
               <div class="pic-box">
                 <div class="magnifier" id="magnifier1">
                   <div class="magnifier-container">
@@ -35,31 +36,12 @@
                     <!--按钮组-->
                     <div class="magnifier-line">
                       <ul class="clearfix animation03">
-                        <li>
+                        <li v-for="item in top.imglist" :key="item.id">
                           <div class="small-img">
-                            <img src="images/1.png" />
+                            <img :src="item.original_path" />
                           </div>
                         </li>
-                        <li>
-                          <div class="small-img">
-                            <img src="images/2.png" />
-                          </div>
-                        </li>
-                        <li>
-                          <div class="small-img">
-                            <img src="images/3.png" />
-                          </div>
-                        </li>
-                        <li>
-                          <div class="small-img">
-                            <img src="images/4.png" />
-                          </div>
-                        </li>
-                        <li>
-                          <div class="small-img">
-                            <img src="images/1.png" />
-                          </div>
-                        </li>
+
                       </ul>
                     </div>
                     <!--缩略图-->
@@ -110,7 +92,7 @@
                     <dd>
                       <div class="btn-buy" id="buyButton">
                         <button class="buy" >立即购买</button>
-                        <button class="add" >加入购物车</button>
+                        <button class="add">加入购物车</button>
                       </div>
                     </dd>
                   </dl>
@@ -214,15 +196,22 @@
 </template>
 
 <script>
-// import magcss from "@lib/imgzoom/css/magnifier.css";
-// import magjs from "@lib/imgzoom/js/magnifier.js";
+// jq的轮播图
 
+import "@/lib/imgzoom/css/magnifier.css";
+import  "@/lib/imgzoom/js/magnifier.js";
+import $ from 'jquery'
+
+//左侧栏的组件
 import appAsid from "./subcom/CommonAsid.vue";
 export default {
   data(){
     return{
+      //url上的参数id
       id:this.$route.params.id,
+      //数量按钮的步长
       num5: 1,
+      //从后台获取回来的数据
       top:{
         goodsinfo:{},
         imglist:[],
@@ -231,6 +220,7 @@ export default {
     }
   },
   methods:{
+    //发送请求到后台获取商品的详情
     getData(){
       this.$http.get(this.$api.goodsDetail+this.id).then(res=>{
         if(res.data.status==0){
@@ -238,14 +228,29 @@ export default {
           // console.log(this.top);
         }
       })
-    }
+    },
   },
+  //在实例完成后，执行的函数
   created(){
     this.getData();
   },
   components: {
     appAsid
   },
+ mounted(){
+	var magnifierConfig = {
+		magnifier : "#magnifier1",//最外层的大容器
+		width : 350,//承载容器宽
+		height :350,//承载容器高
+		moveWidth : null,//如果设置了移动盒子的宽度，则不计算缩放比例
+		zoom : 5//缩放比例
+	};
+ setTimeout(function(){
+    var _magnifier = $().imgzoon(magnifierConfig);
+ },100)
+
+ }
+
 };
 </script>
 
