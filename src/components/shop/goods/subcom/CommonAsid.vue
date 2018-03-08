@@ -11,7 +11,8 @@
           <img :src="item.img_url">
         </div>
         <div class="txt-box">
-          <a href="">{{item.title}}</a>
+          <!-- 修改的路径，因为商品需要随修改而修改页面 -->
+          <router-link :to="{name:'detail',params:{id:item.id}}">{{item.title}}</router-link>
           <span>{{item.add_time | date}}</span>
         </div>
       </li>

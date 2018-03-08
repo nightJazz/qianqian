@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+//导入vuex
+
 // console.log(router);
 Vue.config.productionTip = false
 import ElementUI from 'element-ui'
@@ -24,6 +26,10 @@ import axios from 'axios'
 import './less/index.less'
 import './assets/css/style.css'
 // axios.get(domain + api.logout).then(()=>console.log('登出'));
+
+import Vuex from'Vuex'
+import storeCart from './store/cart.js'
+Vue.use(Vuex)
 
 // 配置默认域名, 这样请求的时候就不用在url里加域名了
 axios.defaults.baseURL = domain;
@@ -48,5 +54,8 @@ new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  store:new Vuex.Store(storeCart)
+
+
 })

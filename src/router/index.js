@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
 //导入路由的vue文件
 import Login from '../components/account/login/Login'
 import Shop from '../components/shop/Shop'
@@ -17,6 +16,7 @@ import Complete from '../components/shop/order/Complete'
 import Shopcart from '../components/shop/shopcart/shopcart'
 
 Vue.use(Router)
+
 //导入路由小组件
 //商品列表和详情
 let Goods = [
